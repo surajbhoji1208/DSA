@@ -1,7 +1,0 @@
--every node either points to zero node or two node
--any lavel in the tree that has any nodes is completely field all the way across is called pefrect tree
--perfect tree is also complete tree ,
-    so with the complete tree u r feeling the tree from  left to right with no gap
- -every node can have one parent
- -childe node also be parent node
- -the node doesnt have any children the are leaf node
