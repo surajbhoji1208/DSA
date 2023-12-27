@@ -119,4 +119,50 @@ public class  BinarySearceTree {
             return currentNode;
     }
 
+    //recursively delete node
+    public  void rDelete(int value)
+    {
+        rDelete(root,value);
+    }
+    private Node rDelete(Node currNode,int value)
+    {
+        if(currNode == null) return null;
+        if(value<currNode.value)
+        {
+            currNode.left = rDelete(currNode.left,value);
+        }
+        else if(value>currNode.value){
+            currNode.rigth = rDelete(currNode.rigth,value);
+        }                                                       //until this line code is for traversing the tree
+        else {                                                  //trigger when value found
+            if(currNode.left == null && currNode.rigth == null)
+            {
+                currNode = null;
+            }
+            else if (currNode.left == null)
+            {
+                currNode = currNode.rigth;
+            } else if (currNode.rigth == null) {
+                currNode = currNode.left;
+            }
+            else {
+                int subMin = minValue(currNode.rigth);
+                currNode.value =subMin;
+                currNode.rigth =rDelete(currNode.rigth,subMin);
+            }
+        }
+        return currNode;
+    }
+
+    //min value function
+    public int minValue(Node currNode)
+    {
+        while (currNode.left != null)
+        {
+            currNode =currNode.left;
+        }
+        return currNode.value;
+    }
+
+
 }
