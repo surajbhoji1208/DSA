@@ -79,6 +79,28 @@ public class DFSPreOrder {
         return result;
     }
 
+                /* DFS post order*/
+    public ArrayList<Integer> DFSPostOrder()
+    {
+        ArrayList<Integer> result = new ArrayList<>();
+        class Traverse{
+            public Traverse(Node currNode)
+            {
+                if(currNode.left != null)
+                {
+                    new Traverse(currNode.left);
+                }
+                if(currNode.rigth != null)
+                {
+                    new Traverse(currNode.rigth);
+                }
+                result.add(currNode.value);
+            }
+        }
+        new Traverse(root);
+        return result;
+    }
+
     /* main methode*/
     public static void main(String[] args) {
         DFSPreOrder bst = new DFSPreOrder();
@@ -91,7 +113,8 @@ public class DFSPreOrder {
         bst.insert(52);
         bst.insert(82);
 
-        bst.DFSPreorder();
+//        bst.DFSPreorder();
+        System.out.println(bst.DFSPostOrder());
     }
 }
 
